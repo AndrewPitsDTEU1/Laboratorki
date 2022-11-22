@@ -1,0 +1,102 @@
+№1 Ньютон 
+
+import math 
+
+from scipy.misc import derivative 
+
+ 
+ 
+
+def f(x): 
+
+    return 2*pow(x,4) + 4*pow(x,3) + pow(x,2) + 3*x - 6 
+
+a = 2 
+
+b = 2 
+
+eps = 0.001 
+
+def nuton(a, b, eps): 
+
+    df2 = derivative(f, b, n = 2) 
+
+    if (f(b)*df2>0): 
+
+        xi = b 
+
+    else: 
+
+        xi = a      
+
+    df = derivative(f, xi, n = 1) 
+
+    xi_1 = xi - f(xi)/df 
+
+    while (abs(xi_1 - xi)>eps): 
+
+        xi = xi_1 
+
+        xi_1 = xi - f(xi)/df 
+
+    return print ('Метод Ньютона х= ', xi_1)    
+
+nuton (a, b, eps) 
+2.Комбінований 
+
+import math 
+
+from scipy.misc import derivative 
+
+ 
+ 
+
+def f(x): 
+
+    return 2*pow(x,4) + 4*pow(x,3) + pow(x,2) + 3*x - 6 
+
+a = -2 
+
+b = 5 
+
+eps = 0.001 
+
+def nuton(a, b, eps): 
+
+    if abs(b - a) < eps: 
+
+        print ('Параметри а або b є невірними ') 
+
+        return 
+
+    df1 = derivative(f, a, n = 1) 
+
+    df2 = derivative(f, b, n = 2) 
+
+    if (df1 * df2 > 0): 
+
+        j = (b - a) / (f(a) - f(b)) * f(a) 
+
+    else: 
+
+        j = f(a) / df1 
+
+    if (df1 * df2 > 0): 
+
+        k = (a - b) / (f(b) - f(a)) * f(b) 
+
+    else: 
+
+        k = f(b) / df1 
+
+    while abs(b - a < eps): 
+
+        l = (k + j) / 2 
+
+    l = (k + j) / 2 
+
+    eps = 0.001                     
+
+    return print ('Корінь = ', abs(l) ) 
+nuton (a, b, eps) 
+
